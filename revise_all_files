@@ -1,0 +1,19 @@
+#!/bin/bash
+
+
+#revise all files as follow
+function walk()
+{
+  for file in `ls $1`
+  do
+    local path=$1"/"$file
+    if [ -d $path ]
+     then
+      #echo "DIR $path"
+      walk $path
+    else
+      echo "FILE $path"
+      sed -i 's#\/home\/gongq\/code#\/home\/yqpt#g' $path
+    fi
+  done
+}
